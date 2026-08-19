@@ -1,0 +1,257 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: #f4f7fb;
+  color: #172033;
+  min-height: 100vh;
+}
+
+.app {
+  width: min(1120px, 94%);
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.hero {
+  background: linear-gradient(135deg, #172554, #2563eb);
+  color: white;
+  border-radius: 24px;
+  padding: 38px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 18px 40px rgba(37, 99, 235, .18);
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  opacity: .8;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  opacity: .88;
+  font-size: 16px;
+}
+
+.wallet {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.15);
+  border-radius: 22px;
+  font-size: 38px;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 22px 0;
+}
+
+.card, .panel {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, .06);
+}
+
+.card {
+  padding: 24px;
+}
+
+.card span {
+  color: #667085;
+  font-size: 14px;
+}
+
+.card strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 28px;
+}
+
+.total strong { color: #166534; }
+.month strong { color: #2563eb; }
+.count strong { color: #7c3aed; }
+
+.panel {
+  padding: 28px;
+  margin-bottom: 22px;
+}
+
+.section-heading h2, .transactions-top h2 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.section-heading p, .transactions-top p {
+  color: #667085;
+  font-size: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 22px;
+}
+
+label {
+  color: #344054;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+input, select {
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 11px;
+  font-size: 15px;
+  outline: none;
+  background: white;
+}
+
+input:focus, select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .1);
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.add-btn {
+  border: 0;
+  background: #2563eb;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 11px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.add-btn:hover { background: #1d4ed8; }
+
+.transactions-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.danger-btn {
+  border: 1px solid #fecaca;
+  background: #fff1f2;
+  color: #dc2626;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 22px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+th, td {
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 1px solid #eaecf0;
+  font-size: 14px;
+}
+
+th {
+  color: #667085;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.amount-cell {
+  font-weight: 800;
+  color: #15803d;
+}
+
+.delete-btn {
+  border: 0;
+  background: transparent;
+  color: #dc2626;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.empty {
+  text-align: center;
+  padding: 45px 20px;
+  color: #667085;
+}
+
+.empty div {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.empty h3 {
+  color: #344054;
+  margin-bottom: 6px;
+}
+
+footer {
+  text-align: center;
+  color: #98a2b3;
+  font-size: 13px;
+  padding: 8px 0 20px;
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: 28px;
+  }
+
+  .wallet {
+    display: none;
+  }
+
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: auto;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+}
+
+.hero-actions{display:flex;align-items:center;gap:14px}.nav-btn,.back-btn{background:white;color:#1d4ed8;text-decoration:none;padding:12px 17px;border-radius:11px;font-weight:800;font-size:14px;display:inline-block}.nav-btn:hover,.back-btn:hover{background:#eff6ff}@media(max-width:720px){.hero-actions{width:100%;justify-content:flex-end}}
