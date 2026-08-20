@@ -3,7 +3,7 @@
 ## Stack
 - Frontend: HTML/CSS/JavaScript
 - Backend: Node.js + Express
-- Database: SQLite
+- Database: SQLite for local development
 - Authentication: Express sessions + bcrypt password hashing
 - Local storage: browser localStorage for non-sensitive public-data caching
 
@@ -18,15 +18,12 @@
 - admin.html
 
 ## Run locally
-1. Install Node.js (LTS).
+1. Install Node.js 20+ LTS.
 2. Open a terminal in this folder.
-3. Run:
-   `npm install`
-4. Copy `.env.example` to `.env` and replace SESSION_SECRET with a strong random secret.
-5. Run:
-   `npm start`
-6. Open:
-   `http://localhost:3000`
+3. Run `npm install`.
+4. Copy `.env.example` to `.env` and set a strong `SESSION_SECRET`.
+5. Run `npm start`.
+6. Open `http://localhost:3000`.
 
 ## Demo accounts
 Admin:
@@ -37,12 +34,27 @@ Student:
 - Student ID: `WRJHS-2026-001`
 - Password: `Student@123`
 
-Change these credentials before any real deployment.
+Change these credentials before real deployment.
 
-## What the backend now supports
+## Vercel deployment
+The project now contains `api/index.js` and `vercel.json` for Vercel routing.
+
+In Vercel, import the GitHub repository and set **Root Directory** to:
+`Worikambo_RC_JHS_BLUE_WHITE_FULLSTACK`
+
+Then add this environment variable:
+`SESSION_SECRET` = a long random secret.
+
+No Build Command is required. Vercel should detect the Node.js API entrypoint.
+
+### Important database note
+The current SQLite implementation is suitable for local development and testing. Vercel's serverless filesystem is not a durable database, so SQLite data must **not** be treated as permanent production storage on Vercel.
+
+For the real school deployment, move the database to a hosted PostgreSQL service (for example Supabase/Neon) and move sessions to a durable external session store. The application should then use environment variables for the database connection.
+
+## Backend features
 - Student/old-student authentication
 - Hashed passwords
-- Persistent SQLite database
 - Student results
 - Resources
 - Admin-created students
@@ -51,23 +63,18 @@ Change these credentials before any real deployment.
 - Hall of Fame records
 - News records
 - Admin dashboard
+- Health endpoint at `/api/health`
 
-## Important production security
-This is a functional starter backend, not a production-ready school information system. Before public deployment:
-- change demo credentials and session secret
-- use HTTPS and secure cookies
-- validate and sanitize all input
-- add CSRF protection
-- add rate limiting
-- implement password reset securely
-- use proper role/permission policies
-- protect student records and comply with applicable privacy/data-protection requirements
-- back up the database
-- use secure file storage for student resources
-- do not store passwords or sensitive student records in localStorage
-
-The browser localStorage layer only caches public/non-sensitive data. Authentication remains server-side.
-
+## Security before production
+- Change demo credentials and session secret.
+- Use HTTPS and secure cookies.
+- Validate and sanitize all input.
+- Add CSRF protection and rate limiting.
+- Implement secure password reset.
+- Enforce role/permission policies.
+- Protect student records and follow applicable privacy/data-protection requirements.
+- Never store passwords or sensitive student records in localStorage.
+- Use durable hosted database storage for production.
 
 ## Visual theme
-The entire interface has been redesigned using **blue and white only**, including navigation, buttons, cards, forms, backgrounds, footer, portal and admin dashboard.
+The entire interface uses **blue and white only**, including navigation, buttons, cards, forms, backgrounds, footer, portal and admin dashboard.
