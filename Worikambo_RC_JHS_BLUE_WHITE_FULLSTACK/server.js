@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+const os = require("os");
+const fs = require("fs");
 const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const SQLiteStore = require("connect-sqlite3")(session);
@@ -7,16 +9,21 @@ const sqlite3 = require("sqlite3").verbose();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const db = new sqlite3.Database(path.join(__dirname, "data", "worikambo.db"));
+const isVercel = process.env.VERCEL === "1";
+const dataDir = isVercel ? path.join(os.tmpdir(), "worikambo-data") : path.join(__dirname, "data");
+fs.mkdirSync(dataDir, { recursive: true });
+const db = new sqlite3.Database(path.join(dataDir, "worikambo.db"));
 
+app.set("trust proxy", 1);
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session({
-  store: new SQLiteStore({ db: "sessions.sqlite", dir: path.join(__dirname, "data") }),
+  store: isVercel ? undefined : new SQLiteStore({ db: "sessions.sqlite", dir: dataDir }),
   secret: process.env.SESSION_SECRET || "change-this-in-production",
-  resave:false, saveUninitialized:false,
-  cookie:{httpOnly:true,sameSite:"lax",secure:false,maxAge:1000*60*60*8}
+  resave:false,
+  saveUninitialized:false,
+  cookie:{httpOnly:true,sameSite:"lax",secure:isVercel,maxAge:1000*60*60*8}
 }));
 
 function run(sql, params=[]){return new Promise((resolve,reject)=>db.run(sql,params,function(e){e?reject(e):resolve(this)}) )}
@@ -70,7 +77,7 @@ app.post("/api/auth/login",async(req,res)=>{
   if(!u || !(await bcrypt.compare(password,u.password_hash))) return res.status(401).json({error:"Invalid Student ID or password"});
   req.session.user={id:u.id,student_id:u.student_id,full_name:u.full_name,role:u.role,account_status:u.account_status};
   res.json({user:req.session.user});
- }catch(e){res.status(500).json({error:"Server error"})}
+ }catch(e){console.error(e);res.status(500).json({error:"Server error"})}
 });
 app.post("/api/auth/logout",(req,res)=>req.session.destroy(()=>res.json({ok:true})));
 app.get("/api/auth/me",(req,res)=>res.json({user:req.session.user||null}));
@@ -121,6 +128,13 @@ app.post("/api/admin/news",adminOnly,async(req,res)=>{
 });
 app.get("/api/news",async(req,res)=>res.json(await all("SELECT * FROM news ORDER BY id DESC")));
 
-app.get("/api/health",(req,res)=>res.json({ok:true,service:"Worikambo R/C JHS API"}));
+app.get("/api/health",(req,res)=>res.json({ok:true,service:"Worikambo R/C JHS API",runtime:isVercel?"vercel":"node"}));
 
-init().then(()=>app.listen(PORT,()=>console.log(`Worikambo server running at http://localhost:${PORT}`)));
+// The initialization promise is awaited by the Vercel function wrapper.
+app.locals.ready = init();
+
+if(require.main === module){
+ app.locals.ready.then(()=>app.listen(PORT,()=>console.log(`Worikambo server running at http://localhost:${PORT}`)));
+}
+
+module.exports = app;
