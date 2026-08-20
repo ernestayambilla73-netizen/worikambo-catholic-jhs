@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/index.js", "use": "@vercel/node" },
+    { "src": "Worikambo_RC_JHS_BLUE_WHITE_FULLSTACK/public/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/index.js" },
+    { "src": "/(.*)", "dest": "/Worikambo_RC_JHS_BLUE_WHITE_FULLSTACK/public/$1" }
+  ]
+}
