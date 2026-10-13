@@ -9,8 +9,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home-enhancements.css">
 </head>
 <body>
+<div id="school-splash" role="status" aria-label="Loading Worikambo Roman Catholic Junior High School"><div class="splash-box"><div class="splash-logo" aria-hidden="true">W</div><h1>Worikambo Roman Catholic JHS</h1><p>Faith · Knowledge · Service</p><div class="splash-loader" aria-hidden="true"></div></div></div>
+
 <header class="site-header">
   <a class="brand" href="#home"><span class="brand-mark">W</span><span>Worikambo <small>R/C JHS</small></span></a>
   <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
@@ -22,15 +25,19 @@
 </header>
 
 <main>
-<section id="home" class="hero">
+<section id="home" class="hero school-slideshow" aria-label="School community photo slideshow">
+  <div class="slide-image active" role="img" aria-label="Ghanaian schoolchildren learning together" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1800&q=85')"></div>
+  <div class="slide-image" role="img" aria-label="Students studying in a classroom" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1800&q=85')"></div>
+  <div class="slide-image" role="img" aria-label="Schoolchildren learning together in class" style="background-image:url('https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1800&q=85')"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content reveal">
-    <span class="eyebrow">WORIKAMBO R/C JHS • LEARN • LEAD • LEAVE A LEGACY</span>
-    <h1>Building <em>bright minds</em> for a better tomorrow.</h1>
-    <p>A modern digital home for students, teachers, parents and the Worikambo old students community.</p>
-    <div class="hero-actions"><a class="btn primary" href="portal.html">Enter Student Portal →</a><a class="btn ghost" href="about.html">Discover Our Story</a></div>
-    <div class="stats"><div><b data-count="25">0</b><span>Years of impact</span></div><div><b data-count="1000">0</b><span>Lives touched</span></div><div><b data-count="98">0</b><span>Community spirit</span></div></div>
+    <span class="eyebrow">WORIKAMBO R/C JHS • LEARN • LEAD • SERVE</span>
+    <h1>Faith-filled learning. <em>Bright futures.</em></h1>
+    <p>Welcome to Worikambo Roman Catholic Junior High School, where education, character and community help every learner grow.</p>
+    <div class="hero-actions"><a class="btn primary" href="about.html">Discover Our School →</a><a class="btn ghost" href="news.html">School News & Notices</a></div>
+    <div class="stats"><div><b data-count="3">0</b><span>Years of JHS learning</span></div><div><b data-count="100">0</b><span>Potential in every learner</span></div><div><b data-count="1">0</b><span>School community</span></div></div>
   </div>
+  <div class="slide-controls" aria-label="Slideshow controls"><button type="button" id="slidePrev" aria-label="Previous photo">‹</button><div class="slide-dots"><button class="active" type="button" aria-label="Show photo 1"></button><button type="button" aria-label="Show photo 2"></button><button type="button" aria-label="Show photo 3"></button></div><button type="button" id="slideNext" aria-label="Next photo">›</button></div>
 </section>
 
 
@@ -65,6 +72,7 @@
   <div class="footer-bottom">© 2026 Worikambo R/C JHS. All rights reserved. <span>Built for learning, connection & legacy.</span></div>
 </footer>
 <div class="toast" id="toast"></div>
+<script src="js/home-enhancements.js"></script>
 <script src="js/app.js"></script><script src="js/local-storage.js"></script>
 </body>
 </html>
