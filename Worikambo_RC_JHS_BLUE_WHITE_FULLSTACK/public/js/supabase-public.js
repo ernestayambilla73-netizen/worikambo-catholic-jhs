@@ -7,7 +7,7 @@
   window.schoolSupabase = client;
 
   async function loadGallery(){
-    const {data,error}=await client.from('school_gallery').select('id,title,image_url,alt_text,display_order,is_homepage').order('display_order',{ascending:true}).limit(12);
+    const {data,error}=await client.from('school_gallery').select('id,title,image_url,alt_text,display_order,is_homepage').eq('is_homepage',true).order('display_order',{ascending:true}).limit(12);
     if(error || !data || !data.length) return;
     const container=document.querySelector('.school-slideshow');
     if(!container) return;
