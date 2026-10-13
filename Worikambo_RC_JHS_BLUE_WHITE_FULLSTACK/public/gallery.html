@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#073b78">
+<title>School Gallery | Worikambo R/C JHS</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.gallery-wrap{max-width:1180px;margin:auto;padding:48px 5% 80px}
+.gallery-intro{max-width:760px;margin-bottom:28px}.gallery-intro h2{font-size:clamp(28px,4vw,42px);line-height:1.15;margin:0 0 12px}.gallery-intro p{color:#5b6b82}
+.gallery-tools{background:#fff;border:1px solid #d7e3f5;border-radius:16px;padding:22px;margin:26px 0}
+.gallery-tools h2{margin-top:0}.gallery-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.gallery-form label{display:block;font-size:14px;font-weight:700}.gallery-form input{display:block;width:100%;margin-top:6px;padding:11px;border:1px solid #d7e3f5;border-radius:8px}.gallery-form .wide{grid-column:1/-1}.gallery-button{border:0;border-radius:8px;padding:12px 18px;background:#073b78;color:#fff;font-weight:700;cursor:pointer}.gallery-button.secondary{background:#eaf2ff;color:#073b78}.gallery-status{min-height:24px;color:#0b5c46;font-size:14px}.gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.gallery-card{background:#fff;border:1px solid #d7e3f5;border-radius:14px;overflow:hidden;box-shadow:0 10px 28px #0b2a5b0d}.gallery-card img{width:100%;height:230px;object-fit:cover;display:block;background:#eaf2ff}.gallery-card-body{padding:16px}.gallery-card h3{font-size:17px;margin:0 0 6px}.gallery-card p{font-size:13px;color:#5b6b82;margin:0}.gallery-card .delete{margin-top:12px;background:#fff0f0;color:#9d1c1c;border:1px solid #f3caca;border-radius:7px;padding:8px 11px;cursor:pointer}.gallery-empty{grid-column:1/-1;padding:32px;background:#fff;border:1px dashed #aabbd4;border-radius:12px;text-align:center;color:#5b6b82}.gallery-auth{display:grid;grid-template-columns:1fr 1fr;gap:12px}.gallery-auth label{font-size:14px;font-weight:700}.gallery-auth input{width:100%;padding:11px;border:1px solid #d7e3f5;border-radius:8px;margin-top:5px}.gallery-auth .wide{grid-column:1/-1}.gallery-note{font-size:13px;color:#5b6b82}@media(max-width:800px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:540px){.gallery-grid,.gallery-form,.gallery-auth{grid-template-columns:1fr}.gallery-form .wide,.gallery-auth .wide{grid-column:auto}.gallery-wrap{padding:32px 4% 55px}.gallery-card img{height:200px}}
+</style>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">W</span><span>Worikambo <small>R/C JHS</small></span></a><button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button><nav id="nav"><a href="index.html">Home</a><a href="about.html">About</a><a href="portal.html">School Portal</a><a href="news.html">News</a><a href="gallery.html">Gallery</a><a class="nav-cta" href="portal.html">Portal Login</a></nav></header>
+<main>
+<section class="page-hero"><span class="eyebrow">SCHOOL LIFE IN PICTURES</span><h1>Worikambo School Gallery</h1><p>Memories from school programmes, celebrations, learning activities and community events.</p></section>
+<section class="gallery-wrap">
+<div class="gallery-intro"><h2>Our programmes and special moments</h2><p>Browse photographs shared by authorised school leadership. Newly published pictures may also appear in the homepage slideshow.</p></div>
+<section id="staffAccess" class="gallery-tools" hidden>
+<h2>Upload programme pictures</h2>
+<p class="gallery-note">Choose a picture directly from your phone gallery or computer. JPG, PNG and WebP images up to 5 MB are supported. Only the headmaster and administrator can publish or remove pictures.</p>
+<form id="galleryForm" class="gallery-form">
+<label>Programme / event name<input id="photoTitle" maxlength="120" placeholder="e.g. Independence Day Celebration" required></label>
+<label>Short description<input id="photoAlt" maxlength="180" placeholder="Describe the school programme"></label>
+<label class="wide">Choose picture from your gallery<input id="photoFile" type="file" accept="image/jpeg,image/png,image/webp" required></label>
+<label><span><input id="homepageCheck" type="checkbox" style="width:auto;display:inline;margin-right:8px">Also show on homepage slideshow</span></label>
+<div class="wide"><button class="gallery-button" type="submit" id="uploadBtn">Upload programme picture</button></div>
+</form><p id="uploadStatus" class="gallery-status" role="status" aria-live="polite"></p>
+</section>
+<section id="signInPanel" class="gallery-tools" hidden><h2>School leadership sign-in</h2><p class="gallery-note">Sign in with your existing headmaster or administrator account to upload and manage gallery pictures.</p><form id="galleryLogin" class="gallery-auth"><label>Email address<input id="staffEmail" type="email" autocomplete="username" required></label><label>Password<input id="staffPassword" type="password" autocomplete="current-password" required></label><div class="wide"><button class="gallery-button" type="submit">Sign in</button></div></form><p id="loginStatus" class="gallery-status" role="status"></p></section>
+<div id="galleryGrid" class="gallery-grid" aria-live="polite"><div class="gallery-empty">Loading school photographs…</div></div>
+</section></main>
+<footer><div class="footer-main"><div><a class="brand" href="index.html"><span class="brand-mark">W</span><span>Worikambo <small>R/C JHS</small></span></a><p>Excellence today. Legacy forever.</p></div><div><h4>Explore</h4><a href="portal.html">School Portal</a><a href="news.html">News & events</a><a href="gallery.html">School Gallery</a></div><div><h4>School</h4><a href="about.html">About us</a><a href="leadership.html">Leadership</a></div></div><div class="footer-bottom">© 2026 Worikambo Roman Catholic JHS.</div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/app.js"></script><script src="js/gallery.js"></script>
+</body></html>
