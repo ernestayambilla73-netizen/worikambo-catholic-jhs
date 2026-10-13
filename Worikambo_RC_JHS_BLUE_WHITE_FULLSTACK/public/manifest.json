@@ -1,0 +1,19 @@
+{
+  "name": "Worikambo Roman Catholic JHS",
+  "short_name": "Worikambo JHS",
+  "description": "School community, student records and teacher timetable",
+  "start_url": "/portal.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f9ff",
+  "theme_color": "#073b78",
+  "icons": [
+    {
+      "src": "/assets/school-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
