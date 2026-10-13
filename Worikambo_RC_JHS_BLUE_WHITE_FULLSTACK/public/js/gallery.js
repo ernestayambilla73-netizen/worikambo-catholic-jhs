@@ -48,7 +48,7 @@ $('galleryLogin').addEventListener('submit',async e=>{
 });
 $('galleryForm').addEventListener('submit',async e=>{
  e.preventDefault();if(!allowed()){status('uploadStatus','Only the headmaster or administrator can upload programme pictures.');return}
- const file=$('photoFile').files[0];if(!file){status('uploadStatus','Choose a picture from your device first.');return}
+ const showOnHome=$('homepageCheck').checked;const file=$('photoFile').files[0];if(!file){status('uploadStatus','Choose a picture from your device first.');return}
  if(!['image/jpeg','image/png','image/webp'].includes(file.type)){status('uploadStatus','Choose a JPG, PNG or WebP picture.');return}
  if(file.size>5*1024*1024){status('uploadStatus','The picture must be 5 MB or smaller.');return}
  const button=$('uploadBtn');button.disabled=true;button.textContent='Uploading…';status('uploadStatus','Uploading picture securely…');
@@ -60,9 +60,9 @@ $('galleryForm').addEventListener('submit',async e=>{
   const {data:existing,error:readError}=await db.from('school_gallery').select('display_order').order('display_order',{ascending:false}).limit(1);
   if(readError)throw readError;
   const nextOrder=(existing?.[0]?.display_order||0)+1;
-  const {error}=await db.from('school_gallery').insert({title:$('photoTitle').value.trim(),image_url:publicData.publicUrl,alt_text:$('photoAlt').value.trim()||$('photoTitle').value.trim(),display_order:nextOrder,is_homepage:$('homepageCheck').checked});
+  const {error}=await db.from('school_gallery').insert({title:$('photoTitle').value.trim(),image_url:publicData.publicUrl,alt_text:$('photoAlt').value.trim()||$('photoTitle').value.trim(),display_order:nextOrder,is_homepage:showOnHome});
   if(error)throw error;
-  $('galleryForm').reset();status('uploadStatus','Picture published. It is now available in the school gallery'+($('homepageCheck').checked?' and homepage slideshow':'')+'.');await loadPhotos();
+  $('galleryForm').reset();status('uploadStatus','Picture published. It is now available in the school gallery'+(showOnHome?' and homepage slideshow':'')+'.');await loadPhotos();
  }catch(err){
   if(path){const clean=await db.storage.from(BUCKET).remove([path]);if(clean.error)console.warn(clean.error)}
   status('uploadStatus',err.message||'Upload failed. Please try again.');
