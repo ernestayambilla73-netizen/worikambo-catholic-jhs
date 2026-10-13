@@ -15,7 +15,8 @@
     const first=container.querySelector('.slide-image');
     const dots=container.querySelector('.slide-dots');
     data.forEach((photo,index)=>{
-      if(!photo.image_url || index===0) return;
+      if(!photo.image_url) return;
+      if(index===0 && first){first.style.backgroundImage='url(\"'+String(photo.image_url).replace(/[\"\\\\]/g,'')+'\")';first.setAttribute('aria-label',photo.alt_text || photo.title || 'School gallery photograph');return;}
       const slide=document.createElement('div');
       slide.className='slide-image';
       slide.setAttribute('role','img');
