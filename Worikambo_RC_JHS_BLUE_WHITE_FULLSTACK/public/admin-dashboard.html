@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b2342">
+<title>Administration | Worikambo Roman Catholic JHS</title>
+<meta name="description" content="Administration for the Worikambo Roman Catholic Junior High School community.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home-enhancements.css">
+<link rel="stylesheet" href="css/recreated-home.css">
+<link rel="stylesheet" href="css/community-pages.css">
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="index.html" aria-label="Worikambo Roman Catholic JHS home"><span class="brand-mark">W</span><span>Worikambo <small>ROMAN CATHOLIC JHS</small></span></a>
+<button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+<nav id="nav" aria-label="Main navigation">
+<a href="index.html">Home</a><a href="about.html">Our School</a><a href="news.html">News</a><a href="gallery.html">Gallery</a><a href="leadership.html">Leadership</a><a href="hall-of-fame.html">Hall of Fame</a><a href="alumni.html">Old Students</a><a href="alumni-directory.html">Directory</a><a href="community.html">Community</a><a href="events.html">Events</a><a href="resources.html">Resources</a><a class="nav-cta" href="portal.html">Community Login</a>
+</nav>
+</header>
+<main class="community-page">
+<section class="page-hero"><span class="eyebrow">FAITH · KNOWLEDGE · SERVICE</span><h1>Administration</h1><p>A dedicated starting point for authorized administrators to manage community content and school information.</p></section>
+<div class="page-grid"><article class="page-panel"><div class="panel-icon">♙</div><h2>Members & roles</h2><p>Authorized administrators need role-based controls for alumni and teacher accounts, with protected actions enforced on the server.</p><span class="mini-label">Authorization required</span></article><article class="page-panel"><div class="panel-icon">▧</div><h2>Gallery & news</h2><p>Manage school photographs, announcements and published information after backend permissions and upload restrictions are verified.</p><a class="page-link secondary" href="gallery.html">View public gallery</a></article><article class="page-panel"><div class="panel-icon">⚑</div><h2>Reports & moderation</h2><p>Review community reports, moderate inappropriate posts and keep an audit trail of sensitive administrative actions.</p><span class="mini-label">Protected backend required</span></article></div><div class="page-notice"><strong>Important security notice:</strong> this is not an active admin console yet. Do not enter credentials or treat these cards as working admin controls. The Supabase project must be restored and its role checks, database policies, storage permissions and admin functions audited before this page is connected to live data.</div></main>
+<footer><div class="footer-main"><div><a class="brand" href="index.html"><span class="brand-mark">W</span><span>Worikambo <small>ROMAN CATHOLIC JHS</small></span></a><p>Faith · Knowledge · Service</p></div><div><h3>Explore</h3><p><a href="about.html">Our school</a><br><a href="news.html">News & notices</a><br><a href="gallery.html">Gallery</a><br><a href="alumni.html">Old students</a></p></div><div><h3>Community</h3><p><a href="alumni-directory.html">Alumni directory</a><br><a href="community.html">Community</a><br><a href="events.html">Events</a><br><a href="portal.html">Community portal</a></p></div></div><div class="footer-bottom">© Worikambo Roman Catholic JHS · Faith, Knowledge & Service</div></footer>
+<script>
+(function(){const button=document.getElementById('menuBtn');const nav=document.getElementById('nav');if(button&&nav){button.addEventListener('click',function(){const open=nav.classList.toggle('open');button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'Close navigation':'Open navigation');});}})();
+</script>
+</body></html>
