@@ -1,0 +1,70 @@
+:root{--wc-ink:#14243b;--wc-navy:#0b2342;--wc-blue:#174b7a;--wc-gold:#d5a64a;--wc-paper:#f7f8fa;--wc-muted:#637184;--wc-line:#e4e8ee;--wc-white:#fff;--wc-shadow:0 18px 50px rgba(11,35,66,.09)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--wc-paper);color:var(--wc-ink);font-family:Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.site-header{height:auto;min-height:78px;padding:14px clamp(18px,5vw,76px);gap:24px;background:#fff;border-bottom:1px solid var(--wc-line);box-shadow:0 3px 18px #0b234208}
+.brand{gap:12px;white-space:nowrap;color:var(--wc-navy);font-size:16px}
+.brand-mark{width:44px;height:44px;border-radius:50%;background:var(--wc-navy);border:2px solid var(--wc-gold);color:#fff;font-size:24px}
+.brand small{font-size:9px;letter-spacing:.15em;color:var(--wc-blue)}
+.site-header nav{gap:clamp(10px,1.5vw,22px);font-size:12px;color:#3f4c5e}
+.site-header nav a{transition:color .2s}
+.site-header nav a:hover{color:var(--wc-blue)}
+.site-header .nav-cta{background:var(--wc-navy);border-radius:7px;padding:12px 17px;color:#fff!important}
+.menu-btn{color:var(--wc-navy)}
+#school-splash{background:var(--wc-navy)}
+.splash-logo{border-color:var(--wc-gold)}
+.splash-box p{color:#e6d2a7}
+.school-slideshow{min-height:clamp(570px,76vh,760px);background:#0b2342}
+.school-slideshow .slide-image{background-position:center 38%}
+.school-slideshow:after{background:linear-gradient(90deg,rgba(6,24,46,.94),rgba(6,24,46,.72) 48%,rgba(6,24,46,.2))}
+.school-slideshow:before{content:"";position:absolute;z-index:0;inset:auto 0 0;height:7px;background:linear-gradient(90deg,var(--wc-gold),#f1d99a,var(--wc-gold))}
+.school-slideshow .hero-content{width:min(1120px,88%);padding-top:80px;padding-bottom:95px}
+.school-slideshow .eyebrow{color:#f0d38e;font-size:11px;letter-spacing:.18em}
+.school-slideshow h1{max-width:800px;font-family:"Playfair Display",Georgia,serif;font-size:clamp(44px,7vw,82px);line-height:1.02;letter-spacing:-.045em}
+.school-slideshow h1 em{color:#f0d38e}
+.school-slideshow p{max-width:610px;font-size:clamp(15px,1.8vw,18px);line-height:1.8;color:#e8edf4}
+.hero-actions{gap:12px;flex-wrap:wrap}
+.btn{border-radius:7px;padding:14px 20px;font-size:13px}
+.btn.primary{background:var(--wc-gold);color:var(--wc-navy);font-weight:800}
+.btn.ghost{border-color:#ffffff80;background:#ffffff0a}
+.slide-controls{right:clamp(18px,6vw,80px);bottom:26px}
+.slide-controls button{border-radius:8px;background:#0b2342c9;border-color:#ffffff50}
+.slide-dots button{border-radius:99px}
+.stats{gap:clamp(22px,5vw,58px);flex-wrap:wrap}
+.stats b{font-size:27px;color:#fff}
+.stats span{font-size:11px;color:#d4deea}
+.section{width:min(1280px,100%);padding:clamp(58px,8vw,100px) clamp(20px,6vw,78px)}
+.cards-section{padding-top:78px;padding-bottom:78px}
+.section-heading{gap:28px;margin-bottom:30px}
+.section-heading .eyebrow,.eyebrow{color:var(--wc-blue)}
+.section-heading h2,.intro h2,.portal h2,.alumni-banner h2{font-family:"Playfair Display",Georgia,serif;color:var(--wc-navy);letter-spacing:-.035em}
+.section-heading h2{font-size:clamp(32px,4vw,48px);line-height:1.1}
+.section-heading>p{max-width:420px;color:var(--wc-muted);font-size:14px;line-height:1.8}
+.feature-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.feature-card{background:#fff;border:1px solid var(--wc-line);border-radius:13px;padding:26px;box-shadow:0 7px 24px #0b234206;transition:transform .2s,box-shadow .2s,border-color .2s}
+.feature-card:hover{transform:translateY(-4px);box-shadow:var(--wc-shadow);border-color:#c9d5e3}
+.feature-card .icon{width:48px;height:48px;border-radius:12px;background:#eef3f8;display:grid;place-items:center;font-size:23px}
+.feature-card h3{margin:18px 0 8px;color:var(--wc-navy);font-size:18px}
+.feature-card p{font-size:13px;line-height:1.8;color:var(--wc-muted)}
+.feature-card a{display:inline-flex;margin-top:8px;color:var(--wc-blue);font-size:13px;font-weight:800}
+#alumni-status-preview{padding-top:70px;padding-bottom:76px}
+#publicStatusStrip{scrollbar-width:thin}
+#publicStatusStrip>a{background:#fff;border:1px solid var(--wc-line);border-radius:13px;padding:14px 10px;min-width:112px;box-shadow:0 5px 16px #0b234207}
+#publicStatusStrip>a:hover{border-color:var(--wc-gold);transform:translateY(-2px)}
+#publicStatusStrip>a>span:first-child{background:conic-gradient(var(--wc-gold),#174b7a,var(--wc-gold))!important}
+#publicStatusStrip>a>span:first-child>span{background:var(--wc-navy)!important}
+.muted{color:var(--wc-muted);font-size:13px}
+footer{background:#091d36;color:#dce4ee}
+.footer-main{padding:48px clamp(20px,6vw,78px);gap:48px}
+footer .brand{color:white}
+footer .brand small{color:#f0d38e}
+footer .brand-mark{background:#fff;color:var(--wc-navy);border-color:var(--wc-gold)}
+footer p,footer a{color:#c4cfdd}
+footer a:hover{color:#f0d38e}
+.footer-bottom{border-top:1px solid #ffffff20;color:#aebdd0;padding:20px clamp(20px,6vw,78px);font-size:12px}
+.toast{z-index:100000}
+@media(max-width:1000px){.site-header nav{gap:10px}.site-header nav a{font-size:11px}.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.site-header{min-height:70px}.menu-btn{display:block}.site-header nav{display:none;position:absolute;top:69px;left:0;right:0;background:white;padding:18px 22px 24px;border-bottom:1px solid var(--wc-line);box-shadow:0 16px 24px #0b234214;align-items:stretch;gap:0}.site-header nav.open{display:flex;flex-direction:column}.site-header nav a{padding:12px 8px;font-size:13px}.site-header .nav-cta{margin-top:7px;text-align:center}.school-slideshow{min-height:680px}.school-slideshow .hero-content{padding-top:60px;padding-bottom:105px}.school-slideshow:after{background:linear-gradient(90deg,rgba(6,24,46,.92),rgba(6,24,46,.68))}.stats{gap:20px}.stats div{min-width:85px}.section-heading{display:block}.section-heading>p{margin-top:16px}.feature-grid{grid-template-columns:1fr}.feature-card{padding:22px}.slide-controls{right:20px;bottom:20px}.footer-main{grid-template-columns:1fr 1fr;gap:30px}.footer-main>div:first-child{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.feature-card,#publicStatusStrip>a{transition:none}}

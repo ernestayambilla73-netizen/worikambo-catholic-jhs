@@ -1,45 +1,12 @@
-const $ = s => document.querySelector(s);
-const $$ = s => document.querySelectorAll(s);
-
-$("#menuBtn").addEventListener("click",()=>$("#nav").classList.toggle("open"));
-$$("nav a").forEach(a=>a.addEventListener("click",()=>$("#nav").classList.remove("open")));
-
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")});
-},{threshold:.12});
-$$(".reveal").forEach(el=>observer.observe(el));
-
-let counted=false;
-const statsObserver=new IntersectionObserver(entries=>{
- if(entries[0].isIntersecting&&!counted){
-  counted=true;
-  $$("[data-count]").forEach(el=>{
-   const target=+el.dataset.count; let n=0; const step=Math.max(1,Math.ceil(target/35));
-   const timer=setInterval(()=>{n=Math.min(target,n+step);el.textContent=n+(target>90?"+":"");if(n>=target)clearInterval(timer)},35);
-  });
- }
-});
-if($(".stats")) statsObserver.observe($(".stats"));
-
-if($("#loginBtn")) $("#loginBtn").addEventListener("click",()=>{
- const id=$("#studentId").value.trim(), pass=$("#password").value.trim(), msg=$("#loginMessage");
- if(!id||!pass){msg.textContent="Please enter your Student ID and password.";msg.style.color="#a33";return}
- msg.textContent="Demo login successful. Connect this form to your real authentication backend.";
- msg.style.color="#0d5c46"; showToast("Welcome to the Student Portal");
-});
-
-$("#alumniBtn").addEventListener("click",e=>{
- e.preventDefault(); showToast("Old Student access is ready for backend authentication.");
-});
-
-let filtered=false;
-$("#filterBtn").addEventListener("click",()=>{
- filtered=!filtered;
- $("#filterBtn").textContent=filtered?"Show all updates":"Show events only";
- $$(".news-card").forEach(card=>card.style.display=filtered&&card.dataset.type!=="event"?"none":"block");
-});
-
-function showToast(text){
- const t=$("#toast");t.textContent=text;t.classList.add("show");
- setTimeout(()=>t.classList.remove("show"),2800);
-}
+(()=> {
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const menu=$("#menuBtn"),nav=$("#nav");
+if(menu&&nav){menu.addEventListener("click",()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));menu.setAttribute("aria-label",open?"Close navigation":"Open navigation")});$$("nav a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");menu.setAttribute("aria-label","Open navigation")}))}
+if("IntersectionObserver" in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12});$$(".reveal").forEach(el=>observer.observe(el))}
+let counted=false;const stats=$(".stats");
+if(stats&&"IntersectionObserver" in window){const statsObserver=new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!counted){counted=true;$$("[data-count]").forEach(el=>{const target=Number(el.dataset.count)||0;let n=0;const step=Math.max(1,Math.ceil(target/35));const timer=setInterval(()=>{n=Math.min(target,n+step);el.textContent=n+(target>90?"+":"");if(n>=target)clearInterval(timer)},35)});statsObserver.disconnect()}},{threshold:.2});statsObserver.observe(stats)}
+const showToast=message=>{const toast=$("#toast");if(!toast)return;toast.textContent=message;toast.classList.add("show");window.setTimeout(()=>toast.classList.remove("show"),2800)};
+const login=$("#loginBtn");if(login)login.addEventListener("click",()=>{const id=$("#studentId")?.value.trim(),pass=$("#password")?.value.trim(),msg=$("#loginMessage");if(!id||!pass){if(msg){msg.textContent="Please enter your Student ID and password.";msg.style.color="#a33"}return}if(msg){msg.textContent="Please sign in using the secure school portal.";msg.style.color="#a33"}showToast("Please use the secure portal sign-in.")});
+const alumni=$("#alumniBtn");if(alumni)alumni.addEventListener("click",e=>{e.preventDefault();showToast("Please sign in through the community portal.")});
+const filter=$("#filterBtn");if(filter)filter.addEventListener("click",()=>{const filtered=filter.dataset.filtered!=="true";filter.dataset.filtered=String(filtered);filter.textContent=filtered?"Show all updates":"Show events only";$$(".news-card").forEach(card=>card.style.display=filtered&&card.dataset.type!=="event"?"none":"")});
+})();
