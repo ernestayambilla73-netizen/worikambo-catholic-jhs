@@ -80,8 +80,7 @@
 <script src="js/supabase-public.js"></script>
 <script src="js/app.js"></script>
 <script>
-(()=>{const menu=document.getElementById('menuBtn'),nav=document.getElementById('nav');if(menu&&nav){menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation':'Open navigation')})}
-const root=document.getElementById('publicStatusStrip');if(!root||!window.supabase)return;
+(()=>{const root=document.getElementById('publicStatusStrip');if(!root||!window.supabase)return;
 const db=window.supabase.createClient('https://xuscdioeuhxdcftetirx.supabase.co','sb_publishable_CNG8Bix04QC1RGFnCkwj0w_obPIYt4t');
 db.from('school_stories').select('id,author_name,caption,created_at,expires_at').gt('expires_at',new Date().toISOString()).order('created_at',{ascending:false}).limit(20).then(({data,error})=>{
 root.replaceChildren();if(error||!Array.isArray(data)||!data.length){const p=document.createElement('p');p.className='muted';p.textContent='No active alumni statuses yet. Community updates will appear here.';root.append(p);return}
